@@ -5,16 +5,14 @@ const bodyParser = require("body-parser");
 const config = require("./config");
 const cors = require("cors");
 
-const app = express(); // return instance of the app
+const app = express();
 
-// setting up the corse config
 app.use(
   cors({
     origin: "http://localhost:3001"
   })
 );
 
-// tell the app to parse the body of the request
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -29,8 +27,6 @@ app.get("*", (req, res) =>
   })
 );
 
-const port = config.port || 3000;
-
 app.listen(port, err => {
   if (err) {
     console.log(err); //TODO: improve the error handling
@@ -39,5 +35,5 @@ app.listen(port, err => {
 
   require("./utils/db");
 
-  console.log(`Server ready on port ${port}`);
+  console.log(`Server ready on port ${config.port}`);
 });
