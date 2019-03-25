@@ -1,7 +1,7 @@
 const User = require("../models/user");
 
 /**
- * Collect the users information
+ * Find the users information
  *
  * @param {object} req The request object
  * @param {object} res The response object
@@ -11,20 +11,20 @@ const getUsers = (req, res) => {
   User.find({})
     .then(users => {
       return res.json({
-        message: "The users where succesfully collected.",
+        message: "The users were found correctly.",
         users
       });
     })
     .catch(error => {
       return res.status(422).json({
-        message: "There was an error collecting the users.",
+        message: "There was an error finding the users.",
         error
       });
     });
 };
 
 /**
- * Collect a specific users information
+ * Find a specific users information
  *
  * @param {object} req The request object
  * @param {object} res The response object
@@ -35,13 +35,13 @@ const getUser = (req, res) => {
   User.findOne({ _id: userId })
     .then(user => {
       return res.json({
-        message: "The user was succesfully collected.",
+        message: "The user was found correctly.",
         user
       });
     })
     .catch(error => {
       return res.status(422).json({
-        message: "There was an error collecting the user.",
+        message: "There was an error finding the user.",
         error
       });
     });
@@ -58,14 +58,40 @@ const updateUser = (req, res) => {
   const userId = req.params.userId;
   User.findOne({ _id: userId })
     .update({ name: req.body.name })
-    .then(success => {
+    .then(user => {
       return res.json({
-        message: "The user has been updated"
+        message: "The user has been updated.",
+        user
       });
     })
     .catch(error => {
       return res.status(422).json({
-        message: "There was an error collecting the users",
+        message: "There was an error updating the users.",
+        error
+      });
+    });
+};
+
+/**
+ * Remove a specific user
+ *
+ * @param {object} req The request object
+ * @param {object} res The response object
+ *
+ **/
+const removeUser = (req, res) => {
+  const userId = req.params.userId;
+  User.findOne({ _id: userId })
+    .remove({})
+    .then(user => {
+      return res.json({
+        message: "The user has been removed.",
+        user
+      });
+    })
+    .catch(error => {
+      return res.status(422).json({
+        message: "There was an error removing the user.",
         error
       });
     });
@@ -74,5 +100,6 @@ const updateUser = (req, res) => {
 module.exports = {
   getUsers,
   getUser,
-  updateUser
+  updateUser,
+  removeUser
 };
