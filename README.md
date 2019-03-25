@@ -29,7 +29,7 @@ age: {
 **GET** `/api/v1/users/user/:userId` _Find a specific user_
 
 
-**PUT** `/api/v1/users/user/:userId` Update a specific user_
+**PUT** `/api/v1/users/user/:userId` _Update a specific user_
 
 
-**DELETE** `/api/v1/users/user/:userId` Remove a specific user_
+**DELETE** `/api/v1/users/user/:userId` _Remove a specific user_
