@@ -27,7 +27,7 @@ app.get("*", (req, res) =>
   })
 );
 
-app.listen(port, err => {
+app.listen(config.port, err => {
   if (err) {
     console.log(err); //TODO: improve the error handling
     process.exit(1);

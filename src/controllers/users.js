@@ -24,6 +24,30 @@ const getUsers = (req, res) => {
 };
 
 /**
+ * Collect a specific users information
+ *
+ * @param {object} req The request object
+ * @param {object} res The response object
+ *
+ **/
+const getUser = (req, res) => {
+  const userId = req.params.userId;
+  User.findOne({ _id: userId })
+    .then(user => {
+      return res.json({
+        message: "The user was succesfully collected.",
+        user
+      });
+    })
+    .catch(error => {
+      return res.status(422).json({
+        message: "There was an error collecting the user.",
+        error
+      });
+    });
+};
+
+/**
  * Update a specific user
  *
  * @param {object} req The request object
@@ -49,5 +73,6 @@ const updateUser = (req, res) => {
 
 module.exports = {
   getUsers,
+  getUser,
   updateUser
 };
