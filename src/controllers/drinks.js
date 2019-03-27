@@ -58,15 +58,15 @@ const newDrink = (req, res) => {
   const name = req.body.name;
   const alternative = req.body.alternative;
   const glass = req.body.glass;
-  const instructions = req.body.instructions;
   const ingredients = req.body.ingredients;
+  const instructions = req.body.instructions;
 
   Drink.create({
     name,
     alternative,
     glass,
-    instructions,
-    ingredients
+    ingredients,
+    instructions
   })
     .then(drink => {
       return res.json({
@@ -100,6 +100,7 @@ const updateDrink = (req, res) => {
     .update({
       name: req.body.name,
       alternative: req.body.alternative,
+      glass: req.body.glass,
       ingredients: req.body.ingredients,
       instructions: req.body.instructions
     })

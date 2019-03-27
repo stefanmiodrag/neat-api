@@ -9,7 +9,7 @@ module.exports = new mongoose.Schema({
     type: Array
   },
   glass: {
-    type: Number
+    type: String
   },
   instructions: {
     type: String,
