@@ -1,8 +1,5 @@
 # neat-api
 
-[![CircleCI](https://circleci.com/gh/stefanmiodrag/node-api.svg?style=svg)](https://circleci.com/gh/stefanmiodrag/node-api)
-
-
 **POST** `/api/v1/drinks/drink/new` _Add new drink_
 
 ```
