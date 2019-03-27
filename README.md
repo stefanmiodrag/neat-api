@@ -1,35 +1,38 @@
-# node-api
+# neat-api
 
 [![CircleCI](https://circleci.com/gh/stefanmiodrag/node-api.svg?style=svg)](https://circleci.com/gh/stefanmiodrag/node-api)
 
 
-**POST** `/api/v1/auth/signup` _Create new user_
+**POST** `/api/v1/drinks/drink/new` _Add new drink_
 
 ```
-name: {
-  type: String,
-  required: true
-},
- 
-email: {
-  type: String,
-  unique: true,
-  required: true
-
-age: {
-  type: Number,
-  required: true
-  min: 16
-}
+  name: {
+    type: String,
+    required: [true, "Please enter a name."]
+  },
+  alternative: {
+    type: Array
+  },
+  glass: {
+    type: Number
+  },
+  instructions: {
+    type: String,
+    required: [true, "Please enter instructions."]
+  },
+  ingredients: {
+    type: Array,
+    required: [true, "Please enter the ingredients."]
+  }
 ```
 
-**GET** `/api/v1/users/user` _Find all users_
+**GET** `/api/v1/drinks` _Find all drinks
 
 
-**GET** `/api/v1/users/user/:userId` _Find a specific user_
+**GET** `/api/v1/drinks/drink/:drinkId` _Find a specific drink_
 
 
-**PUT** `/api/v1/users/user/:userId` _Update a specific user_
+**PUT** `/api/v1/drinks/drink/:drinkId` _Update a specific drink_
 
 
-**DELETE** `/api/v1/users/user/:userId` _Remove a specific user_
+**DELETE** `/api/v1/drinks/drink/:drinkId` _Remove a specific drink_
