@@ -3,8 +3,11 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const config = require("./config");
 const cors = require("cors");
+const Sentry = require("@sentry/node");
 
 const app = express();
+
+Sentry.init({ dsn: "https://2bf1f71ca9e8410bb50d6f82e73ec0eb@sentry.io/1426406" });
 
 app.use(
   cors({
@@ -12,6 +15,7 @@ app.use(
   })
 );
 
+app.use(Sentry.Handlers.requestHandler());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -26,9 +30,17 @@ app.get("*", (req, res) =>
   })
 );
 
+app.use(Sentry.Handlers.errorHandler());
+
+// Fallback Error Handling
+app.use(function onError(err, req, res, next) {
+  res.statusCode = 500;
+  res.end(res.sentry + "\n");
+});
+
 app.listen(config.port, err => {
   if (err) {
-    console.log(err); //TODO: improve the error handling
+    Sentry.captureException(err);
     process.exit(1);
   }
 
