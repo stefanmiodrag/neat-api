@@ -1,35 +1,17 @@
 # neat-api
 
-**POST** `/api/v1/drinks/drink/new` _Add new drink_
+Node API using MongoDB, integrated with CircleCI and Sentry.
 
-```
-  name: {
-    type: String,
-    required: [true, "Please enter a name."]
-  },
-  alternative: {
-    type: Array
-  },
-  glass: {
-    type: Number
-  },
-  instructions: {
-    type: String,
-    required: [true, "Please enter instructions."]
-  },
-  ingredients: {
-    type: Array,
-    required: [true, "Please enter the ingredients."]
-  }
-```
+---
 
-**GET** `/api/v1/drinks` _Find all drinks
+The following endpoints are available for users to interact with the API:
 
+**POST** `/api/v1/drinks/drink/new` 
 
-**GET** `/api/v1/drinks/drink/:drinkId` _Find a specific drink_
+**GET** `/api/v1/drinks` 
 
+**GET** `/api/v1/drinks/drink/:drinkId` 
 
-**PUT** `/api/v1/drinks/drink/:drinkId` _Update a specific drink_
+**PUT** `/api/v1/drinks/drink/:drinkId` 
 
-
-**DELETE** `/api/v1/drinks/drink/:drinkId` _Remove a specific drink_
+**DELETE** `/api/v1/drinks/drink/:drinkId`
