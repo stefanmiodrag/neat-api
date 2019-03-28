@@ -1,4 +1,7 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 module.exports = {
-  mongodbUri: process.env.MONGODB_URI || "mongodb://localhost:27017/api",
-  port: process.env.PORT || "3000"
+  mongodbUri: process.env.MONGODB_URI,
+  port: "3000"
 };

@@ -1,5 +1,4 @@
 const express = require("express");
-const dotenv = require("dotenv");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const config = require("./config");
