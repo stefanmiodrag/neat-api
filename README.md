@@ -1,6 +1,6 @@
 # neat-api
 
-Node API using MongoDB, integrated with CircleCI and Sentry.
+Node API using MongoDB, using CircleCI for continuous integration and Sentry for logging. 
 
 ---
 
